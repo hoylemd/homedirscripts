@@ -138,6 +138,12 @@ endfunc
 :com! D :!d %
 " add/stage current file
 :com! A :!a %
+" add git status
+:com! S :!s
+" add git log
+:com! L :!log
+" add commit
+:com! C :!ci
 
 " Source the local vim changes
 if filereadable("~/.vim_local")
