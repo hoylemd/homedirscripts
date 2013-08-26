@@ -90,11 +90,11 @@ set noswapfile
 """"""""""""""""""""""""""""""""""""'
 " => Tabbing and formatting
 """"""""""""""""""""""""""""""""""""'
-set noexpandtab
+set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set smarttab          " User tabs at the start of a lines, spaces otherwise
+"set smarttab          " User tabs at the start of a lines, spaces otherwise
 
 "set autoindent        " Automatic indenting on new line
 set smartindent       " Smart indenting, based on typed code
