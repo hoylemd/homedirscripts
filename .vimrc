@@ -135,11 +135,11 @@ endfunc
 
 " define some source control commands
 " diff current file
-:com! D :!d %
+:com! D :!d -f %
 " add/stage current file
 :com! A :!a %
 " add git status
-:com! S :!s
+:com! S :!s -f
 " add git log
 :com! L :!log -f
 " add git graph
