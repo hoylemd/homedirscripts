@@ -121,6 +121,7 @@ export COMMIT_MESSAGE_FILE=".commit"
 export VIM_OUTPUT_FILE=".output"
 export TEST="HAAAYYYY"
 export SVN_EDITOR=vim
+export VENV_DIR=~/virtualenvs
 
 # include the local stuff
 if [ -f ~/.bash_local ]; then
