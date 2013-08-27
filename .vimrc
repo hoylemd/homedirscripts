@@ -141,9 +141,12 @@ endfunc
 " add git status
 :com! S :!s
 " add git log
-:com! L :!log
+:com! L :!log -f
+" add git graph
+:com! G :!graph -f
 " add commit
 :com! C :!ci
+
 
 " Source the local vim changes
 if filereadable("~/.vim_local")
