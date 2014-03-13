@@ -147,6 +147,11 @@ endfunc
 " add commit
 :com! C :!ci
 
+" function to add the vb function
+function! VerticalSplitBuffer(buffer)
+    execute "vert belowright sb" a:buffer
+endfunction
+command! -nargs=1 Vb call VerticalSplitBuffer(<f-args>)
 
 " Source the local vim changes
 if filereadable("~/.vim_local")
