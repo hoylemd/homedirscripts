@@ -141,7 +141,7 @@ endfunc
 " add git status
 :com! S :!s -f
 " add git log
-:com! L :!log -f
+:com! L :!l -f %
 " add git graph
 :com! G :!graph -f
 " add commit
