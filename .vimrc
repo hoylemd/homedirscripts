@@ -158,5 +158,5 @@ if filereadable("~/.vim_local")
 	source ~/.vim_local
 endif
 
-" stop smartindent from effing with my #
-inoremap # X^H#
+" stop smartindent from screwing with my #
+inoremap # X#
