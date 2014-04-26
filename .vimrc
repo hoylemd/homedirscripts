@@ -157,3 +157,6 @@ command! -nargs=1 Vb call VerticalSplitBuffer(<f-args>)
 if filereadable("~/.vim_local")
 	source ~/.vim_local
 endif
+
+" stop smartindent from effing with my #
+inoremap # X^H#
