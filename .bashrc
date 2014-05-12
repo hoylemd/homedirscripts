@@ -57,7 +57,13 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-	PS1="\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$ \[\033[1;37m\]"
+	PS1="\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$(__git_ps1 " (%s)")$ \[\033[1;37m\]"
+    #PS1='[\u@\h \W]\$ '
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+#GIT_PS1_SHOWUPSTREAM=auto
+
 else
 	PS1="\u@\h:\w$"
 fi
