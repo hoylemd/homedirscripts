@@ -57,8 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-	PS1="\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$(__git_ps1 " (%s)")$ \[\033[1;37m\]"
-    #PS1='[\u@\h \W]\$ '
+	PS1='\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$(__git_ps1 " (%s)")$ \[\033[1;37m\]'
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -94,6 +93,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias :e='vim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
