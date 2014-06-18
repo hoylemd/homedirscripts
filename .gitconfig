@@ -1,0 +1,34 @@
+[user]
+	name = Michael D. Hoyle
+	email = michael.hoyle@filemobile.com
+[core]
+	excludesfile = /home/michael.hoyle/.gitignore_global
+	editor = vim
+	autocrlf = input
+[alias]
+	st = status
+	br = branch
+	bar = branch-all-remotes
+	co = checkout
+	la = log --all --decorate --graph --oneline
+	lg = log --oneline --decorate --graph
+	review = log -p --decorate --reverse master..HEAD
+	lb = log --graph --decorate --oneline
+	bm = branch --merged
+	bn = branch --no-merged
+[color]
+	ui = true
+[bz]
+	email = bugzilla@ops.filemobile.com
+[rerere]
+	enabled = true
+[merge]
+	log = true
+#[sendemail]
+#    smtpuser=michael.hoyle@filemobile.com
+#    smtpserver=smtp.gmail.com
+    #smtpssl=true
+    #chainreplyto=false
+[push]
+	default = simple
+
