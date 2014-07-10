@@ -140,8 +140,10 @@ endfunc
 :com! A :!a %
 " add git status
 :com! S :!s -f
-" add git log
+" add jslint
 :com! L :!l -f %
+" add jshint
+:com! H :!jshint % > .output
 " add git graph
 :com! G :!graph -f
 " add commit
