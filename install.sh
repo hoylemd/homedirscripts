@@ -12,7 +12,7 @@ install () {
     return 0
 }
 
-for script in .vimrc .bashrc .gitconfig .git-completion.bash .git-prompt.sh
+for script in .vimrc .bashrc .tmux.conf .gitconfig .git-completion.bash .git-prompt.sh
 do
 	install $script ~/$script
 done
