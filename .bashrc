@@ -56,6 +56,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+#source the git prompt script
+source ~/homedirscripts/.git-prompt.sh
+
+color_prompt=yes
+
 if [ "$color_prompt" = yes ]; then
 	PS1='\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$(__git_ps1 " (%s)")$ \[\033[1;37m\]'
     GIT_PS1_SHOWDIRTYSTATE=1
@@ -129,11 +134,15 @@ export TEST="HAAAYYYY"
 export SVN_EDITOR=vim
 export VENV_DIR=~/virtualenvs
 
+# source the git completion script
+if [ -f ~/.git-completion.bash ]; then
+	. ~/.git-completion.bash
+fi
+
 # include the local stuff
 if [ -f ~/.bash_local ]; then
 	. ~/.bash_local
 fi
-
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

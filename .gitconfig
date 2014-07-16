@@ -1,6 +1,6 @@
 [user]
 	name = Michael D. Hoyle
-	email = michael.hoyle@filemobile.com
+	email = hoylemd@gmail.com
 [core]
 	excludesfile = /home/michael.hoyle/.gitignore_global
 	editor = vim
@@ -16,19 +16,14 @@
 	lb = log --graph --decorate --oneline
 	bm = branch --merged
 	bn = branch --no-merged
+    beamdown = checkout --track
+    bd = checkout --track
 [color]
 	ui = true
-[bz]
-	email = bugzilla@ops.filemobile.com
 [rerere]
 	enabled = true
 [merge]
 	log = true
-#[sendemail]
-#    smtpuser=michael.hoyle@filemobile.com
-#    smtpserver=smtp.gmail.com
-    #smtpssl=true
-    #chainreplyto=false
 [push]
 	default = simple
 
