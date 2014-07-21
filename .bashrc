@@ -56,6 +56,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+#source the git prompt script
+source ~/homedirscripts/.git-prompt.sh
+
 if [ "$color_prompt" = yes ]; then
 	PS1='\[\033[0;32m\]\u\[\033[1;33m\]@\h:\[\033[1;34m\]\w\[\033[1;33m\]$(__git_ps1 " (%s)")$ \[\033[1;37m\]'
     GIT_PS1_SHOWDIRTYSTATE=1

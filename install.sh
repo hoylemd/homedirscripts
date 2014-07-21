@@ -1,10 +1,6 @@
 mv ~/.vimrc vimrc.old
 mv ~/.bashrc bashrc.old
 mv ~/.gitconfig gitconfig.old
-mv ~/.bash_profile bash_profile.old
-mv ~/.git-prompt.sh git-prompt.sh.old
 ln .vimrc ~/.vimrc
 ln .bashrc ~/.bashrc
 ln .gitconfig ~/.gitconfig
-ln .bash_profile ~/.bash_profile
-ln .git-prompt.sh ~/.git-prompt.sh
