@@ -19,6 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
