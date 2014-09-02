@@ -134,8 +134,14 @@ export TEST="HAAAYYYY"
 export SVN_EDITOR=vim
 export VENV_DIR=~/virtualenvs
 
+# source the git completion script
+if [ -f ~/.git-completion.bash ]; then
+	. ~/.git-completion.bash
+fi
+
 # include the local stuff
 if [ -f ~/.bash_local ]; then
 	. ~/.bash_local
 fi
+
 
