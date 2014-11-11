@@ -126,12 +126,12 @@ set noswapfile
 " => Tabbing and formatting
 """"""""""""""""""""""""""""""""""""'
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 "set smarttab          " User tabs at the start of a lines, spaces otherwise
 
-"set autoindent        " Automatic indenting on new line
+set autoindent        " Automatic indenting on new line
 set smartindent       " Smart indenting, based on typed code
 set wrap              "Wrap lines
 
