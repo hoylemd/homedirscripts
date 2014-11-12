@@ -1,6 +1,6 @@
-"========================================================'
-" $Author: hoylemd <Michael D. Hoyle>
-" ======================================================='
+" ========================================================'
+" $Author: hoylemd <Michael D. Hoyle>'
+" ========================================================'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 " => Vundle
@@ -20,6 +20,8 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
+Plugin 'nono/vim-handlebars'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,20 +44,17 @@ filetype plugin indent on    " required
 set history=700 " Sets line history
 set autoread    " Sets to autoread when the file is changed externally
 
+" set the leader to ,
 let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-if has("gui_running") " CTRL-S save support in GVIM
-    map <silent> <c-s> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
-    imap <c-s> <c-o><c-s>
-endif
 
 """"""""""""""""""""""""""""""""""""'
 " => VIM User Interface
 """"""""""""""""""""""""""""""""""""'
-set so=7
+set scrolloff=7     " Minimum number of lines to keep above and below the cursor
 set wildmenu        " Auto complete menu
 set ruler           " Display cursor position data in status line
 set showcmd         " Show partial commands in status line
@@ -72,7 +71,6 @@ set nolazyredraw    " Redraw during macros (enable for potential speed increase
 
 set showmatch       " Brace matching
 set mat=2           " Cursor blink in 1/10 sec
-set scrolloff=3     " Minimum number of lines to keep above and below the cursor
 
 " What to show when you do :set list.
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
@@ -95,13 +93,7 @@ set gfn=Consolas:h11:cANSI
 
 set background=dark
 colorscheme koehler
-if has("gui_running")
-    set guioptions-=T
-    set t_Co=256
-    set nu          " Line numbers
-else
-    set nonu        " No line numbers
-endif
+set nu          " Line numbers
 
 autocmd! bufwritepost imrc source ~/.vimrc
 
@@ -126,35 +118,37 @@ set noswapfile
 " => Tabbing and formatting
 """"""""""""""""""""""""""""""""""""'
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 "set smarttab          " User tabs at the start of a lines, spaces otherwise
 
-"set autoindent        " Automatic indenting on new line
-set smartindent       " Smart indenting, based on typed code
-set wrap              "Wrap lines
+set autoindent        " Automatic indenting on new line
+"set smartindent       " Smart indenting, based on typed code
+"set wrap              "Wrap lines
 
-set lbr
+set lbr               "Line break on 500 characters
 set tw=500
 
 """"""""""""""""""""""""""""""""""""'
 " => Mappings
 """"""""""""""""""""""""""""""""""""'
-"Move a line or visual selection up or down with <ALT-k> or <ALT-j>
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-nmap <M-down> <M-j>
-nmap <M-up> <M-k>
-vmap <M-down> <M-j>
-vmap <M-down> <M-k>
-
 " space bar un-highlights search
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
+""""""""""""""""""""""""""""""""""""'
+" => Misc stuff
+""""""""""""""""""""""""""""""""""""'
+" delete trailing whitespace on save
+ autocmd BufWrite * :call DeleteTrailingWS()
+
+" set the vim shell
+:set shell=/bin/bash\ -l
+
+""""""""""""""""""""""""""""""""""""'
+" => Changed for specific file types
+""""""""""""""""""""""""""""""""""""'
+" Makefiles
 autocmd BufEnter ?akefile* set noet ts=8 sw=8 nocindent
 "Delete trailing white space
 func! DeleteTrailingWS()
@@ -162,13 +156,13 @@ func! DeleteTrailingWS()
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
-"Call when ever a buffer with file <*> is written
- autocmd BufWrite * :call DeleteTrailingWS()
 
-"set the vim shell
-:set shell=/bin/bash\ -l
+" Javascript
+autocmd BufEnter *.js set cinoptions=J1
 
-" define some source control commands
+""""""""""""""""""""""""""""""""""""'
+" => Define some source control commands
+""""""""""""""""""""""""""""""""""""'
 " diff current file
 :com! D :!d -f %
 " add/stage current file
@@ -196,9 +190,7 @@ if filereadable("~/.vim_local")
 endif
 
 " stop smartindent from screwing with my #
-inoremap # X#
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+"inoremap # X#
 
 set exrc
 set secure
