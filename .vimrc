@@ -21,7 +21,16 @@ Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Plugin 'nono/vim-handlebars'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
+
+" This does what it says on the tin. It will check your file on open too, not just on save.
+" You might not want this, so just leave it out if you don't.
+let g:syntastic_check_on_open=1
+Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,20 +89,16 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+set nu          " Line numbers
 
 """"""""""""""""""""""""""""""""""""'
 " => Colours and Fonts
 """"""""""""""""""""""""""""""""""""'
-syntax enable "Enable syntax hl
 
-" set gfn=Monospace\ 10
-" set shell=/bin/bash
-" set gfn=Monaco:h10:cANSI
-set gfn=Consolas:h11:cANSI
-
+set t_Co=256
+syntax on
 set background=dark
 colorscheme koehler
-set nu          " Line numbers
 
 autocmd! bufwritepost imrc source ~/.vimrc
 
@@ -134,6 +139,8 @@ set tw=500
 " space bar un-highlights search
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
+" ctrl-c splits line
+imap <C-c> <CR><Esc>O
 """"""""""""""""""""""""""""""""""""'
 " => Misc stuff
 """"""""""""""""""""""""""""""""""""'
@@ -156,7 +163,7 @@ func! DeleteTrailingWS()
 endfunc
 
 " Javascript
-autocmd BufEnter *.js set cinoptions=J1
+"autocmd BufEnter *.js set cinoptions=J1
 
 """"""""""""""""""""""""""""""""""""'
 " => Define some source control commands
