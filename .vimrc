@@ -124,8 +124,6 @@ set softtabstop=2
 "set smarttab          " User tabs at the start of a lines, spaces otherwise
 
 set autoindent        " Automatic indenting on new line
-"set smartindent       " Smart indenting, based on typed code
-"set wrap              "Wrap lines
 
 set lbr               "Line break on 500 characters
 set tw=500
