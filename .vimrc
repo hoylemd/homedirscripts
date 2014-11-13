@@ -144,7 +144,15 @@ imap <C-c> <CR><Esc>O
 """"""""""""""""""""""""""""""""""""'
 " => Misc stuff
 """"""""""""""""""""""""""""""""""""'
-" delete trailing whitespace on save
+
+" Delete trailing white space
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+
+" Delete trailing whitespace on save
  autocmd BufWrite * :call DeleteTrailingWS()
 
 " set the vim shell
@@ -155,12 +163,6 @@ imap <C-c> <CR><Esc>O
 """"""""""""""""""""""""""""""""""""'
 " Makefiles
 autocmd BufEnter ?akefile* set noet ts=8 sw=8 nocindent
-"Delete trailing white space
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
 
 " Javascript
 "autocmd BufEnter *.js set cinoptions=J1
@@ -185,17 +187,24 @@ endfunc
 
 " function to add the vb function
 function! VerticalSplitBuffer(buffer)
-    execute "vert belowright sb" a:buffer
+  execute "vert belowright sb" a:buffer
 endfunction
 command! -nargs=1 Vb call VerticalSplitBuffer(<f-args>)
 
+" fix indents for makefiles
+autocmd BufEnter ?akefile* set noet ts=8 sw=8 nocindent
+
+" make vim stop beign silly with python
+autocmd FileType python set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType python set modelines=1
+inoremap # X#
+
 " Source the local vim changes
 if filereadable("~/.vim_local")
-	source ~/.vim_local
+  source ~/.vim_local
 endif
 
-" stop smartindent from screwing with my #
-"inoremap # X#
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set exrc
 set secure
