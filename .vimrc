@@ -214,6 +214,15 @@ autocmd FileType python set shiftwidth=4 | set expandtab
 autocmd FileType python set modelines=1
 inoremap # X#
 
+" trim trailing blank lines
+" src: http://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
+function TrimEndLines()
+    let save_cursor = getpos(".")
+    :silent! %s#\($\n\s*\)\+\%$##
+    call setpos('.', save_cursor)
+endfunction
+autocmd BufWritePre *.py call TrimEndLines()
+
 " Auto-flake8 python files on save
 autocmd BufWritePost *.py call Flake8()
 
