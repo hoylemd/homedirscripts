@@ -21,7 +21,7 @@
 issue_file="issue_tag"
 prompt="" # set this to "yes" (or any string, really) to prompt for a issue tag
 prefix="See #" # this will be prefixed to the issue tag in the message
-temp="temp.tmp" # temporary place to store the message
+temp="/tmp/msg.tmp" # temporary place to store the message
 
 # initialize an empty tring for tag
 issue=""
@@ -48,5 +48,5 @@ fi
 if [ -n "$issue" ]; then
   `cat $1 > $temp`
   echo "" >> $temp
-  echo "$prefix$issue" >> $temp && cp $temp $1
+  echo "$prefix$issue" >> $temp && mv $temp $1
 fi
