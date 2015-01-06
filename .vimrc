@@ -26,6 +26,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+
+" resource .vimrc and call :PluginInstall to install plugins
 
 " This does what it says on the tin. It will check your file on open too, not just on save.
 " You might not want this, so just leave it out if you don't.
@@ -154,6 +157,9 @@ endfunc
 
 " Delete trailing whitespace on save
  autocmd BufWrite * :call DeleteTrailingWS()
+
+" Auto-flake8 python files on save
+autocmd BufWritePost *.py call Flake8()
 
 " set the vim shell
 :set shell=/bin/bash\ -l
