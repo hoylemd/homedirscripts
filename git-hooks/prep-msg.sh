@@ -18,10 +18,13 @@
 # If no issue tag is found through any of these methods, the tag line will not be
 #  appended and your commit message will be used as-is
 
-issue=""
 issue_file="issue_tag"
 prompt="" # set this to "yes" (or any string, really) to prompt for a issue tag
 prefix="See #" # this will be prefixed to the issue tag in the message
+temp="temp.tmp" # temporary place to store the message
+
+# initialize an empty tring for tag
+issue=""
 
 # Attempt to read the issue tag from a file
 if [ -e $issue_file ]; then
@@ -43,7 +46,7 @@ fi
 
 # append the See line if an issue has been set
 if [ -n "$issue" ]; then
-  `cat $1 > /tmp/msg.tmp`
-  echo "" >> /tmp/msg.tmp
-  echo "$prefix$issue" >> /tmp/msg.tmp && mv /tmp/msg.tmp $1
+  `cat $1 > $temp`
+  echo "" >> $temp
+  echo "$prefix$issue" >> $temp && cp $temp $1
 fi
