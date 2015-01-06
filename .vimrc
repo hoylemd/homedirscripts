@@ -26,6 +26,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+
+" resource .vimrc and call :PluginInstall to install plugins
 
 " This does what it says on the tin. It will check your file on open too, not just on save.
 " You might not want this, so just leave it out if you don't.
@@ -164,9 +167,6 @@ endfunc
 " Makefiles
 autocmd BufEnter ?akefile* set noet ts=8 sw=8 nocindent
 
-" Javascript
-"autocmd BufEnter *.js set cinoptions=J1
-
 """"""""""""""""""""""""""""""""""""'
 " => Define some source control commands
 """"""""""""""""""""""""""""""""""""'
@@ -194,11 +194,6 @@ command! -nargs=1 Vb call VerticalSplitBuffer(<f-args>)
 " fix indents for makefiles
 autocmd BufEnter ?akefile* set noet ts=8 sw=8 nocindent
 
-" make vim stop beign silly with python
-autocmd FileType python set tabstop=2|set shiftwidth=2|set expandtab
-autocmd FileType python set modelines=1
-inoremap # X#
-
 " Source the local vim changes
 if filereadable("~/.vim_local")
   source ~/.vim_local
@@ -208,3 +203,26 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set exrc
 set secure
+
+""""""""""""""""""""""""""""""""""""'
+" => Python specific settings
+""""""""""""""""""""""""""""""""""""'
+"
+" make vim stop beign silly with python
+autocmd FileType python set softtabstop=4 | set tabstop=4
+autocmd FileType python set shiftwidth=4 | set expandtab
+autocmd FileType python set modelines=1
+inoremap # X#
+
+" trim trailing blank lines
+" src: http://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
+function TrimEndLines()
+    let save_cursor = getpos(".")
+    :silent! %s#\($\n\s*\)\+\%$##
+    call setpos('.', save_cursor)
+endfunction
+autocmd BufWritePre *.py call TrimEndLines()
+
+" Auto-flake8 python files on save
+autocmd BufWritePost *.py call Flake8()
+
