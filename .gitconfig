@@ -1,29 +1,30 @@
 [user]
-	name = Michael D. Hoyle
-	email = hoylemd@gmail.com
+  name = Michael D. Hoyle
+  email = hoylemd@gmail.com
 [core]
-	excludesfile = /home/michael.hoyle/.gitignore_global
-	editor = vim
-	autocrlf = input
+  excludesfile = /home/michael.hoyle/.gitignore_global
+  editor = vim
+  autocrlf = input
 [alias]
-	st = status
-	br = branch
-	bar = branch-all-remotes
-	co = checkout
-	la = log --all --decorate --graph --oneline
-	lg = log --oneline --decorate --graph
-	review = log -p --decorate --reverse master..HEAD
-	lb = log --graph --decorate --oneline
-	bm = branch --merged
-	bn = branch --no-merged
+  st = status
+  br = branch
+  bar = branch-all-remotes
+  co = checkout
+  la = log --all --decorate --graph --oneline
+  lg = log --oneline --decorate --graph
+  ls = log --oneline --decorate --graph
+  review = log -p --decorate --reverse master..HEAD
+  lb = log --graph --decorate --oneline
+  bm = branch --merged
+  bn = branch --no-merged
     beamdown = checkout --track
     bd = checkout --track
 [color]
-	ui = true
+  ui = true
 [rerere]
-	enabled = true
+  enabled = true
 [merge]
-	log = true
+  log = true
 [push]
-	default = simple
+  default = simple
 
