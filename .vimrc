@@ -27,6 +27,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'ngmy/vim-rubocop'
 
 " resource .vimrc and call :PluginInstall to install plugins
 
@@ -91,8 +92,8 @@ set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
 set nu          " Line numbers
+set colorcolumn=80
 
 """"""""""""""""""""""""""""""""""""'
 " => Colours and Fonts
@@ -132,9 +133,6 @@ set softtabstop=2
 "set smarttab          " User tabs at the start of a lines, spaces otherwise
 
 set autoindent        " Automatic indenting on new line
-
-set lbr               "Line break on 500 characters
-set tw=500
 
 """"""""""""""""""""""""""""""""""""'
 " => Mappings
@@ -207,8 +205,7 @@ set secure
 """"""""""""""""""""""""""""""""""""'
 " => Python specific settings
 """"""""""""""""""""""""""""""""""""'
-"
-" make vim stop beign silly with python
+" make vim stop being silly with python
 autocmd FileType python set softtabstop=4 | set tabstop=4
 autocmd FileType python set shiftwidth=4 | set expandtab
 autocmd FileType python set modelines=1
@@ -216,13 +213,20 @@ inoremap # X#
 
 " trim trailing blank lines
 " src: http://stackoverflow.com/questions/7495932/how-can-i-trim-blank-lines-at-the-end-of-file-in-vim
-function TrimEndLines()
-    let save_cursor = getpos(".")
-    :silent! %s#\($\n\s*\)\+\%$##
-    call setpos('.', save_cursor)
-endfunction
+if !exists("*TrimEndLines")
+  function TrimEndLines()
+      let save_cursor = getpos(".")
+      :silent! %s#\($\n\s*\)\+\%$##
+      call setpos('.', save_cursor)
+  endfunction
+endif
 autocmd BufWritePre *.py call TrimEndLines()
 
 " Auto-flake8 python files on save
 autocmd BufWritePost *.py call Flake8()
 
+""""""""""""""""""""""""""""""""""""'
+" => C specific settings
+""""""""""""""""""""""""""""""""""""'
+autocmd FileType c set softtabstop=2 | set tabstop=2
+autocmd FileType c set shiftwidth=2 | set expandtab

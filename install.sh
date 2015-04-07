@@ -16,3 +16,5 @@ for script in .vimrc .bashrc .tmux.conf .gitconfig .git-completion.bash .git-pro
 do
 	install $script ~/$script
 done
+
+cp vim/* ~/.vim/
